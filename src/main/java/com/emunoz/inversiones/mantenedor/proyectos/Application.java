@@ -1,9 +1,11 @@
-package com.emunoz.inversiones.acceso;
+package com.emunoz.inversiones.mantenedor.proyectos;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
+@EntityScan("com.emunoz.inversiones.mantenedor.proyectos")
 public class Application {
 
 	public static void main(String[] args) {

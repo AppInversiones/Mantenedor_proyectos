@@ -35,7 +35,7 @@ Este proyecto de Spring Boot proporciona un servicio de mantencion de proyectos 
 - JUnit 5.9.1
 - Mockito 4.9.0
 - h2database
-- Feinght
+- Feinght 
 
 ## Base de Datos
 

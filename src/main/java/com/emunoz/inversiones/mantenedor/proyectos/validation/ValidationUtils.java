@@ -1,6 +1,6 @@
 package com.emunoz.inversiones.mantenedor.proyectos.validation;
 
-import com.emunoz.inversiones.mantenedor.proyectos.models.response.ProyectResponseDTO;
+import com.emunoz.inversiones.mantenedor.proyectos.models.response.ProjectResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -14,8 +14,8 @@ import java.util.List;
 @Component
 public class ValidationUtils {
 
-    public ResponseEntity<ProyectResponseDTO> handleValidationErrors(BindingResult bindingResult) {
-        ProyectResponseDTO proyectResponseDTO = new ProyectResponseDTO();
+    public ResponseEntity<ProjectResponseDTO> handleValidationErrors(BindingResult bindingResult) {
+        ProjectResponseDTO projectResponseDTO = new ProjectResponseDTO();
 
         if (bindingResult.hasErrors()) {
             List<String> errors = new ArrayList<>();
@@ -27,10 +27,10 @@ public class ValidationUtils {
             for (ObjectError error : bindingResult.getGlobalErrors()) {
                 errors.add(error.getDefaultMessage());
             }
-            proyectResponseDTO.setMessage("Campos vacios");
-            proyectResponseDTO.setData(errors);
-            proyectResponseDTO.setCode(0);
-            return new ResponseEntity<>(proyectResponseDTO, HttpStatus.BAD_REQUEST);
+            projectResponseDTO.setMessage("Campos vacios");
+            projectResponseDTO.setData(errors);
+            projectResponseDTO.setCode(0);
+            return new ResponseEntity<>(projectResponseDTO, HttpStatus.BAD_REQUEST);
         }
 
         return null; // No hay errores de validación

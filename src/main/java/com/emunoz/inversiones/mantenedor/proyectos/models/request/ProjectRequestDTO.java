@@ -4,18 +4,19 @@ import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
 @Builder
-public class ProyectRequestDTO {
+public class ProjectRequestDTO {
 
     private Long id;
 
-    @NotBlank(message = "El nombre no puede estar en blanco")
+    @NotBlank(message = "El nombre no puede estar en blanco.")
     @Size(max = 30)
     private  String name;
 
-    @NotBlank(message = "La ganancia diaria no puede estar en blanco")
+    @NotNull(message = "La ganancia diaria no puede estar en blanco.")
     private Float daily_profit;
 }

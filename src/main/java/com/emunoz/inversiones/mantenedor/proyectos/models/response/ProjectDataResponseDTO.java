@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProyectResponseDTO {
+public class ProjectDataResponseDTO {
 
-    private String  message;
-    private Object data;
-    private Integer code;
+    private Long id;
+    private String name;
+    private Float daily_profit;
 }

@@ -25,7 +25,7 @@ public class ProyectServiceImpl implements ProyectService {
 
     @Override
     public ProyectResponseDTO getAllProyects() {
-        ProyectResponseDTO proyectResponse = new ProyectResponseDTO();
+        ProyectResponseDTO projectResponse = new ProyectResponseDTO();
 
         List<ProyectEntity> proyectEntities = proyectRepository.findAll();
         List<ProyectDataResponseDTO> proyectDataResponseDTOs = proyectEntities.stream()
@@ -34,38 +34,38 @@ public class ProyectServiceImpl implements ProyectService {
 
 
         if (proyectEntities.isEmpty()) {
-            proyectResponse.setMessage("No hay proyectos registrados.");
-            proyectResponse.setCode(1);
-            return proyectResponse;
+            projectResponse.setMessage("No hay proyectos registrados.");
+            projectResponse.setCode(1);
+            return projectResponse;
         }
 
-        proyectResponse.setMessage("Proyectos encontrados.");
-        proyectResponse.setData(proyectDataResponseDTOs);
-        proyectResponse.setCode(2);
+        projectResponse.setMessage("Proyectos encontrados.");
+        projectResponse.setData(proyectDataResponseDTOs);
+        projectResponse.setCode(2);
 
-        return proyectResponse;
+        return projectResponse;
     }
 
     @Override
     public ProyectResponseDTO getproyectById(Long id) {
-        ProyectResponseDTO proyectResponse = new ProyectResponseDTO();
+        ProyectResponseDTO projectResponse = new ProyectResponseDTO();
 
         Optional<ProyectEntity> proyectOptional = proyectRepository.findById(id);
 
         if (!proyectOptional.isPresent()) {
-            proyectResponse.setMessage("No existe el proyecto.");
-            proyectResponse.setCode(1);
-            return proyectResponse;
+            projectResponse.setMessage("No existe el proyecto.");
+            projectResponse.setCode(1);
+            return projectResponse;
         }
 
         ProyectEntity proyectEntity = proyectOptional.get();
         ProyectDataResponseDTO proyectDataResponseDTO = ProyectMapper.toResponseDTO(proyectEntity);
 
-        proyectResponse.setMessage("Proyecto encontrado.");
-        proyectResponse.setData(proyectDataResponseDTO);
-        proyectResponse.setCode(2);
+        projectResponse.setMessage("Proyecto encontrado.");
+        projectResponse.setData(proyectDataResponseDTO);
+        projectResponse.setCode(2);
 
-        return proyectResponse;
+        return projectResponse;
 
     }
 

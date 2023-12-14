@@ -64,7 +64,6 @@ public class ProjectServiceImpl implements ProjectService {
         projectResponse.setMessage("Proyecto encontrado.");
         projectResponse.setData(projectDataResponseDTO);
         projectResponse.setCode(2);
-
         return projectResponse;
 
     }
@@ -77,9 +76,8 @@ public class ProjectServiceImpl implements ProjectService {
         Optional<ProjectEntity> existingProject = projectRepository.findProyectByName(projectRequest.getName());
 
         if (existingProject.isPresent()) {
-            projectResponse.setMessage("El proyecto ya existe");
+            projectResponse.setMessage("El proyecto ya existe.");
             projectResponse.setCode(1);
-
             return projectResponse;
         }
 
@@ -103,7 +101,8 @@ public class ProjectServiceImpl implements ProjectService {
 
         if(!existingProject.isPresent()) {
             projectResponse.setMessage("El proyecto no existe.");
-            projectResponse.setCode(1);
+            projectResponse.setCode(0);
+            return projectResponse;
         }
 
         ProjectEntity projectToUpdate = existingProject.get();

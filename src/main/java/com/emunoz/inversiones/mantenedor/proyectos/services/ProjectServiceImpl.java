@@ -42,7 +42,6 @@ public class ProjectServiceImpl implements ProjectService {
         projectResponse.setMessage("Proyectos encontrados.");
         projectResponse.setData(projectDataResponseDTOS);
         projectResponse.setCode(2);
-
         return projectResponse;
     }
 
@@ -141,7 +140,7 @@ public class ProjectServiceImpl implements ProjectService {
         boolean exist = projectRepository.existsById(id);
 
         if (!exist) {
-            projectResponse.setMessage("No existe el projecto.");
+            projectResponse.setMessage("No existe el proyecto.");
             projectResponse.setCode(1);
             return projectResponse;
         }
@@ -149,7 +148,6 @@ public class ProjectServiceImpl implements ProjectService {
         projectRepository.deleteById(id);
         projectResponse.setMessage("Proyecto eliminado con exito.");
         projectResponse.setCode(2);
-
         return projectResponse;
     }
 }

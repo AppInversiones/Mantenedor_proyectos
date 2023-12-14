@@ -22,7 +22,7 @@ import java.util.List;
 
 @RestController
 @Log4j2
-@RequestMapping(path = "api/V1/proyecto")
+@RequestMapping(path = "api/V1/project")
 public class ProjectController {
 
     @Autowired
@@ -61,7 +61,7 @@ public class ProjectController {
     }
 
     //-------------------
-    @Operation(summary = "Servicio que lista un proyecto.")
+    @Operation(summary = "Servicio que lista un proyecto por su id.")
     @ApiResponses(
             value = {
                     @ApiResponse(responseCode = "200", description = "proyecto encontrado.", content = {
@@ -104,7 +104,6 @@ public class ProjectController {
             return validationError;
         }
 
-
         if (!validationTokenService.validateToken(token)) {
             ProjectResponseDTO projectResponse = new ProjectResponseDTO();
 
@@ -141,8 +140,6 @@ public class ProjectController {
             return validationError;
         }
 
-
-
         if (!validationTokenService.validateToken(token)) {
             ProjectResponseDTO projectResponse = new ProjectResponseDTO();
 
@@ -172,10 +169,8 @@ public class ProjectController {
                     @ApiResponse(responseCode = "500", description = "Error interno del servidor", content = @Content),
             }
     )
-    @DeleteMapping(path = "{proyectoId}")
-    public ResponseEntity<ProjectResponseDTO> deleteProject(@PathVariable("proyectoId") Long proyectId, @RequestHeader(name = "Authorization") String token) {
-
-
+    @DeleteMapping(path = "{projectId}")
+    public ResponseEntity<ProjectResponseDTO> deleteProject(@PathVariable("projectId") Long projectId, @RequestHeader(name = "Authorization") String token) {
 
         if (!validationTokenService.validateToken(token)) {
             ProjectResponseDTO projectResponse = new ProjectResponseDTO();
@@ -184,7 +179,7 @@ public class ProjectController {
             return new ResponseEntity<>(projectResponse, HttpStatus.UNAUTHORIZED);
         }
 
-        ProjectResponseDTO res = projectService.deleteProject(proyectId);
+        ProjectResponseDTO res = projectService.deleteProject(projectId);
 
         if(res.getCode() == 1) {
             return new ResponseEntity<>(res, HttpStatus.CONFLICT);
